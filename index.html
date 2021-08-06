@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="visitorID">visitorID:</h1>
+</body>
+<script>
+  async function initFingerprintJS() {
+    // Initialize an agent at application startup.
+    const result = await FingerprintJS.load().then(fp => fp.get());
+    const visitorId = result.visitorId;
+    const visitorIdEl = document.getElementById('visitorID');
+    visitorIdEl.innerText = `${visitorIdEl.innerText} ${visitorId}`;
+  }
+</script>
+<script
+  async
+  src="//cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"
+  onload="initFingerprintJS()"
+></script>
+</html>
